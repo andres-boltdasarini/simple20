@@ -1,0 +1,62 @@
+@import "variables";
+@import "mixins";
+@import "class";
+
+
+.header {
+  @extend %header-shared;
+  .button {
+    @include button(red);
+  }
+  .button a{
+    color: black;
+    @include button(red);
+  }
+}
+.header img {
+  height: 35px;
+  padding: 10px 15px 10px 10px;
+}
+.bar {
+  @extend %header-shared;
+  top: $header-height;
+  height: 40px;
+  background: black;
+
+  .buy {
+@extend %buy-shared
+  }
+
+}
+.bar2 {
+  @extend %header-shared;
+  top: $header2-height;
+  height: 20px;
+  background: #313131;
+  justify-content: normal;
+}
+.text {
+  @extend %text-shared;
+  display: flex;
+  align-content: center;
+
+}
+.text2 {
+  @extend %text-shared;
+  font-size: 10px;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+.text2 a{
+  color: white;
+  text-decoration: none;
+}
+.buy {
+  @extend %buy-shared;
+  height: 30px;
+  background-color: black;
+  color: white;
+
+}

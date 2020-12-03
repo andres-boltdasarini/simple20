@@ -1,0 +1,19 @@
+@import "variables";
+@import "mixins";
+@import "class";
+
+.body {
+  position: absolute;
+  top: $header-all-height;
+  text-align: center;
+  padding: 0 200px 0 200px;
+  font-family: 'Roboto', sans-serif;
+}
+.insert{
+  outline: 2px solid black;
+  border-radius: 14px;
+}
+.img-test {
+  width: 100%;
+  height: auto;
+}
