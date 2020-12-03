@@ -18,10 +18,6 @@
   ],
   "author": "AK",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/andres-boltdasarini/excel/issues"
-  },
-  "homepage": "https://github.com/andres-boltdasarini/excel#readme",
   "browserslist": ">0.25%, not dead",
   "devDependencies": {
     "@babel/core": "^7.11.1",
