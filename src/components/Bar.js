@@ -34,7 +34,7 @@ const Bar = () => {
             <NavLink to="/support">поддержка</NavLink>
         </div>
         <div className='text2'>
-            сравнить
+            <NavLink to="/compare">сравнить</NavLink>
         </div>
     </div>
         </div>

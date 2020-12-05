@@ -4,6 +4,7 @@ import Support from "@/components/Support";
 import {Route} from "react-router-dom";
 import Account from "@/components/Account";
 import HeaderContainer from "@/components/HeaderContainer";
+import Compare from "@/components/Compare";
 
 
 
@@ -17,6 +18,7 @@ class App extends Component {
                 <Route path='/about' component={About}/>
                 <Route path='/support' render={() => <Support/>}/>
                 <Route path='/account' render={() => <Account/>}/>
+                <Route path='/compare' render={() => <Compare/>}/>
             </div>
         )
     }
