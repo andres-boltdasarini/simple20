@@ -1,62 +1,86 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "@/redux/blogReducer";
+import {addPostActionCreator} from "@/redux/blogReducer";
 import '../scss/about.scss'
-import Bar from "@/components/Bar";
+import {Field, reduxForm} from "redux-form";
 
 
-const Blog = (props) => {
-
-    let postsElements =
-        props.posts.map( p => <div>{p.message}</div>)
-    let newPostElement = React.createRef();
-
-    let onAddPost = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text);
-    }
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
-    }
+const FormControl = ({input, meta:{touched,error}, children}) => {
+    const hasError = touched && error;
     return (
-        <div className='body'>
-            <Bar/>
-            <h3>My</h3>
+        <div>
             <div>
-                <div>
-                    <textarea onChange={ onPostChange } ref={newPostElement}
-                              value={props.newPostText}/>
-                </div>
-                <div>
-                    <button onClick={ onAddPost }>Add post</button>
-                </div>
+                {children}
             </div>
-            <div >
-                { postsElements }
-            </div>
+            { hasError && <span>{error}</span> }
         </div>
     )
 }
 
+export const Textarea = (props) => {
+    const {input, meta, child, ...restProps} = props;
+    return <FormControl {...props}><textarea {...input} {...restProps} /></FormControl>
+}
+
+let AddNewPostForm = (props) => {
+    return <form onSubmit={props.handleSubmit}>
+        <div>
+            <Field name="newPostText" component={Textarea} placeholder={"Post message"}
+                   />
+        </div>
+        <div>
+            <button>Add post</button>
+        </div>
+    </form>;
+}
+
+let AddNewPostFormRedux = reduxForm({form: "ProfileAddNewPostForm"})(AddNewPostForm);
+
+const MyPosts = React.memo(props => {
+    const Post = (props) => {
+        return (
+            <div >
+                {props.message}
+            </div>
+        )
+    }
+    let postsElements =
+        [...props.posts]
+            .reverse()
+            .map( p => <Post message={p.message} likesCount={p.likesCount}/>);
+
+
+
+    let onAddPost = (values) => {
+        props.addPost(values.newPostText);
+    }
+
+    return (
+        <div >
+            <h3>My posts</h3>
+            <AddNewPostFormRedux onSubmit={onAddPost} />
+            <div>
+                {postsElements}
+            </div>
+        </div>
+    )
+})
+
 const mapStateToProps = (state) => {
     return {
-        posts: state.blogReducer.posts,
-        newPostText: state.blogReducer.newPostText
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText
     }
 }
+
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateNewPostText: (text) => {
-            let action = updateNewPostTextActionCreator(text);
-            dispatch(action);
-        },
-        addPost: (text) => {
-            dispatch(addPostActionCreator(text));
+        addPost: (newPostBody) => {
+            dispatch(addPostActionCreator(newPostBody));
         }
     }
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Blog);
+export default connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
