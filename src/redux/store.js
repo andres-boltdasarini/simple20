@@ -1,5 +1,4 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
-import thunkMiddleware from "redux-thunk";
+import {combineReducers, createStore} from "redux";
 import { reducer as formReducer } from 'redux-form'
 import profileReducer from "@/redux/blogReducer";
 
@@ -9,8 +8,7 @@ let reducers = combineReducers({
     form: formReducer
 });
 
-let store = createStore(reducers,applyMiddleware(thunkMiddleware));
-
+let store = createStore(reducers);
 window.store = store;
 
 
