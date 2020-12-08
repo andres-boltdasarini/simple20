@@ -9,6 +9,7 @@ import Compare from "@/components/Compare";
 
 
 
+
 class App extends Component {
     render() {
         return (
@@ -19,6 +20,7 @@ class App extends Component {
                 <Route path='/support' render={() => <Support/>}/>
                 <Route path='/account' render={() => <Account/>}/>
                 <Route path='/compare' render={() => <Compare/>}/>
+
             </div>
         )
     }
