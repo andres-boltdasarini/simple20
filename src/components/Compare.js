@@ -5,28 +5,12 @@ import '../scss/about.scss'
 import {Field, reduxForm} from "redux-form";
 
 
-const FormControl = ({input, meta:{touched,error}, children}) => {
-    const hasError = touched && error;
-    return (
-        <div>
-            <div>
-                {children}
-            </div>
-            { hasError && <span>{error}</span> }
-        </div>
-    )
-}
 
-export const Textarea = (props) => {
-    const {input, meta, child, ...restProps} = props;
-    return <FormControl {...props}><textarea {...input} {...restProps} /></FormControl>
-}
 
 let AddNewPostForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
         <div>
-            <Field name="newPostText" component={Textarea} placeholder={"Post message"}
-                   />
+            <Field name="newPostText" component='textarea' placeholder={"Post message"}/>
         </div>
         <div>
             <button>Add post</button>
