@@ -1,4 +1,5 @@
 import React from 'react';
+import '../scss/about.scss'
 
  class Table extends React.Component {
      constructor() {
@@ -69,7 +70,7 @@ import React from 'react';
              );
          })
 
-         return <>
+         return <div className='body'>
 
                      {renderPageNumbers}
 
@@ -93,7 +94,7 @@ import React from 'react';
                  </div>
 
              </div>
-         </>
+         </div>
      }
 }
 export default Table

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Table from "@/components/Table.jsx";
+import Table from "@/components/Table.js";
 import {addPost, requestUsers, updateNewPostText} from "@/redux/tableReducer";
 
 
