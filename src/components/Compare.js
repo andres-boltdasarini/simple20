@@ -20,7 +20,7 @@ let AddNewPostForm = (props) => {
 
 let AddNewPostFormRedux = reduxForm({form: "ProfileAddNewPostForm"})(AddNewPostForm);
 
-const MyPosts = React.memo(props => {
+const MyPosts = (props) => {
     const Post = (props) => {
         return (
             <div >
@@ -31,7 +31,7 @@ const MyPosts = React.memo(props => {
     let postsElements =
         [...props.posts]
             .reverse()
-            .map( p => <Post message={p.message} likesCount={p.likesCount}/>);
+            .map( p => <Post message={p.message}/>);
 
 
 
@@ -40,7 +40,7 @@ const MyPosts = React.memo(props => {
     }
 
     return (
-        <div >
+        <div className='body'>
             <h3>My posts</h3>
             <AddNewPostFormRedux onSubmit={onAddPost} />
             <div>
@@ -48,7 +48,7 @@ const MyPosts = React.memo(props => {
             </div>
         </div>
     )
-})
+}
 
 const mapStateToProps = (state) => {
     return {
