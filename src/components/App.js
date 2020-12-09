@@ -4,8 +4,9 @@ import Support from "@/components/Support";
 import {Route} from "react-router-dom";
 import Account from "@/components/Account";
 import HeaderContainer from "@/components/HeaderContainer";
-import Compare from "@/components/Compare";
 import TableContainer from "@/components/TableContainter.js";
+import Blog from "@/components/Blog";
+
 
 
 
@@ -20,8 +21,8 @@ class App extends Component {
                 <Route path='/about' component={About}/>
                 <Route path='/support' render={() => <Support/>}/>
                 <Route path='/account' render={() => <Account/>}/>
-                <Route path='/compare' render={() => <Compare/>}/>
-                <Route path='/compar' render={() => <TableContainer/>}/>
+                <Route path='/blog' render={() => <Blog/>}/>
+                <Route path='/table' render={() => <TableContainer/>}/>
             </div>
         )
     }

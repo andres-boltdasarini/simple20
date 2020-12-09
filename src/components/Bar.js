@@ -28,13 +28,14 @@ const Bar = () => {
             <NavLink to="/about">особенности</NavLink>
         </div>
         <div className='text2'>
-            характеристики
+
+            <NavLink to="/table">характеристики</NavLink>
         </div>
         <div className='text2'>
             <NavLink to="/support">поддержка</NavLink>
         </div>
         <div className='text2'>
-            <NavLink to="/compare">сравнить</NavLink>
+            <NavLink to="/blog">сравнить</NavLink>
         </div>
     </div>
         </div>

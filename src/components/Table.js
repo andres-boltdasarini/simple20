@@ -50,7 +50,7 @@ import '../scss/about.scss'
          let postsElementsFirstName = this.props.items.map(p => <div>{p.firstName}</div>).slice(indexOfFirstTodo, indexOfLastTodo)
          let postsElementsId = this.props.items.map(p => <div>{p.id}</div>).slice(indexOfFirstTodo, indexOfLastTodo)
 
-         const atem1 = this.props.items.sort((a, b) => (a.id - b.id)).map(p =><div>{p.id}</div> )
+
          const atemA = this.props.items.sort((a, b) => {if(a.firstName < b.firstName ) return -1
              if(a.firstName  > b.firstName ) return 1}).map(p =><div>{p.id}</div> )
 
