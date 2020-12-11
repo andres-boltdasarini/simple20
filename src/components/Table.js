@@ -3,18 +3,9 @@ import '../scss/about.scss'
 import Bar from "@/components/Bar";
 
  class Table extends React.Component {
-     constructor() {
-         super();
-         this.state = {
-             currentPage: 1,
-             todosPerPage: 4
-         }
-         this.handlClick = this.handlClick.bind(this);
-     }
-     handlClick(event) {
-         this.setState({
-             currentPage: Number(event.target.id)
-         });
+     handlClick = (event) => {
+         const a = Number(event.target.id)
+         this.props.setCurrentPage(a);
      }
      render() {
          let newPostElement = React.createRef();
@@ -29,15 +20,15 @@ import Bar from "@/components/Bar";
          }
 
 
-         const indexOfLastTodo = this.state.currentPage * this.state.todosPerPage
-         const indexOfFirstTodo = indexOfLastTodo - this.state.todosPerPage
+         const indexOfLastTodo = this.props.currentPage * this.props.todosPerPage
+         const indexOfFirstTodo = indexOfLastTodo - this.props.todosPerPage
 
          let postsElementsFirstName = this.props.items.map(p => <div>{p.firstName}</div>).slice(indexOfFirstTodo, indexOfLastTodo)
          let postsElementsId = this.props.items.map(p => <div>{p.id}</div>).slice(indexOfFirstTodo, indexOfLastTodo)
 
 
          const pageNumbers = [];
-         for (let i = 1; i <= Math.ceil(this.props.items.length / this.state.todosPerPage); i++) {
+         for (let i = 1; i <= Math.ceil(this.props.items.length / this.props.todosPerPage); i++) {
              pageNumbers.push(i);
          }
          const renderPageNumbers = pageNumbers.map(number => {

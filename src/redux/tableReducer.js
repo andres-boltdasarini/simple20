@@ -5,7 +5,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const SET_USERS = 'SET_USERS';
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
-
+const SET_CURRENT = 'SET_CURRENT'
 
 let initialState = {
     items: [
@@ -20,8 +20,9 @@ let initialState = {
         {id: 3, message: 'Boom'},
         {id: 4, message: 'Day'},
     ],
-    newPostText: 'it-test'
-}
+    newPostText: 'it-test',
+    currentPage: 1,
+    todosPerPage: 4}
 
 const tableReducer = (state = initialState, action) => {
 
@@ -49,6 +50,12 @@ const tableReducer = (state = initialState, action) => {
                 newPostText: action.newText
             }
         }
+        case SET_CURRENT: {
+            return {
+                ...state,
+                currentPage: action.newText
+            }
+        }
         default:
             return state
     }
@@ -58,6 +65,7 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 export const setUsers = (items) => ({type: SET_USERS, items })
 export const addPostActionCreator = (text) => ({type: ADD_POST, newText: text})
 export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text })
+export const setCurrentPageCreator = (text) => ({type: SET_CURRENT, newText: text})
 
 
 export const requestUsers = () => {
@@ -82,6 +90,13 @@ export const  addPost = (text) => {
         dispatch(addPostActionCreator(text));
     }
 }
+export const  setCurrentPage = (text) => {
+    return (dispatch) => {
+        dispatch(setCurrentPageCreator(text));
+    }
+}
+
+
 
 
 

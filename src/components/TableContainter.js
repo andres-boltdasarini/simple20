@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Table from "@/components/Table.js";
-import {addPost, requestUsers, updateNewPostText} from "@/redux/tableReducer";
+import {addPost, requestUsers, updateNewPostText,setCurrentPage} from "@/redux/tableReducer";
 
 
 class TableContainer extends React.Component {
@@ -24,9 +24,10 @@ let mapStateToProps = (state) => {
         pageSize: state.tableReducer.pageSize,
         currentPage: state.tableReducer.currentPage,
         posts: state.tableReducer.posts,
-        newPostText: state.tableReducer.newPostText
+        newPostText: state.tableReducer.newPostText,
+        todosPerPage: state.tableReducer.todosPerPage,
     }
 }
 
 
-export default connect(mapStateToProps,{requestUsers,updateNewPostText,addPost})(TableContainer)
+export default connect(mapStateToProps,{requestUsers,updateNewPostText,addPost,setCurrentPage})(TableContainer)
