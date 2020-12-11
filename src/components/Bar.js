@@ -29,13 +29,13 @@ const Bar = () => {
         </div>
         <div className='text2'>
 
-            <NavLink to="/table">характеристики</NavLink>
+            <NavLink to="/table">сравнить</NavLink>
         </div>
         <div className='text2'>
             <NavLink to="/support">поддержка</NavLink>
         </div>
         <div className='text2'>
-            <NavLink to="/blog">сравнить</NavLink>
+            <NavLink to="/blog">характеристики</NavLink>
         </div>
     </div>
         </div>

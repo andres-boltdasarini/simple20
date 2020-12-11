@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {addPostActionCreator} from "@/redux/blogReducer";
 import '../scss/about.scss'
 import {Field, reduxForm} from "redux-form";
+import Bar from "@/components/Bar";
 
 
 
@@ -10,10 +11,10 @@ import {Field, reduxForm} from "redux-form";
 let AddNewPostForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
         <div>
-            <Field name="newPostText" component='textarea' placeholder={"Post message"}/>
+            <Field name="newPostText" component='textarea' placeholder={"Сообщение"}/>
         </div>
         <div>
-            <button>Add post</button>
+            <button>Добавить</button>
         </div>
     </form>;
 }
@@ -41,7 +42,8 @@ const Blog = (props) => {
 
     return (
         <div className='body'>
-            <h3>My posts</h3>
+            <Bar/>
+            <h3>характеристики</h3>
             <AddNewPostFormRedux onSubmit={onAddPost} />
             <div>
                 {postsElements}

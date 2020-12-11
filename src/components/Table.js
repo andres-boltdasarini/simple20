@@ -1,5 +1,6 @@
 import React from 'react';
 import '../scss/about.scss'
+import Bar from "@/components/Bar";
 
  class Table extends React.Component {
      constructor() {
@@ -51,6 +52,7 @@ import '../scss/about.scss'
              );
          })
          return <div className='body'>
+             <Bar/>
                      {renderPageNumbers}
              <table border="1">
                  <tr>

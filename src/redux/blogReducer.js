@@ -2,10 +2,10 @@ const ADD_POST = 'ADD-POST';
 
 let initialState = {
     posts: [
-        {id: 1, message: 'Hi, how are you?', likesCount: 12},
-        {id: 2, message: 'It\'s my first post', likesCount: 11},
-        {id: 3, message: 'Blabla', likesCount: 11},
-        {id: 4, message: 'Dada', likesCount: 11}
+        {id: 1, message: '100х зум. Увидеть невозможное.'},
+        {id: 2, message: 'Сверхвысокое разрешение видео'},
+        {id: 3, message: 'Получайте 33 МП снимки из ваших 8К видео'},
+        {id: 4, message: 'Снимайте как на экшн-камеру'}
     ],
 
     profile: null,
@@ -20,7 +20,7 @@ const profileReducer = (state = initialState, action) => {
             let newPost = {
                 id: 5,
                 message: action.newPostBody,
-                likesCount: 0
+
             };
             return {
                 ...state,
