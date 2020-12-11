@@ -5,10 +5,8 @@ import '../scss/about.scss'
      constructor() {
          super();
          this.state = {
-             buttext: 'down',
-             sorti: false,
-             currentPage: 3,
-             todosPerPage: 3
+             currentPage: 1,
+             todosPerPage: 4
          }
          this.handlClick = this.handlClick.bind(this);
      }
@@ -17,15 +15,7 @@ import '../scss/about.scss'
              currentPage: Number(event.target.id)
          });
      }
-        activateSorti = () => {
-
-            this.setState({
-                sorti:true
-            })}
-
      render() {
-
-
          let newPostElement = React.createRef();
 
          let onAddPost = () => {
@@ -37,12 +27,6 @@ import '../scss/about.scss'
              this.props.updateNewPostText(text);
          }
 
-         const result = Object.values(this.props.items).map(v => Object.values(v)).map(p =><div>{p[0]}</div>)
-
-
-         let postsElementsFirstNamerev = this.props.items.map(p => p.firstName).reverse().map(p =><div>{p}</div>)
-
-
 
          const indexOfLastTodo = this.state.currentPage * this.state.todosPerPage
          const indexOfFirstTodo = indexOfLastTodo - this.state.todosPerPage
@@ -50,9 +34,6 @@ import '../scss/about.scss'
          let postsElementsFirstName = this.props.items.map(p => <div>{p.firstName}</div>).slice(indexOfFirstTodo, indexOfLastTodo)
          let postsElementsId = this.props.items.map(p => <div>{p.id}</div>).slice(indexOfFirstTodo, indexOfLastTodo)
 
-
-         const atemA = this.props.items.sort((a, b) => {if(a.firstName < b.firstName ) return -1
-             if(a.firstName  > b.firstName ) return 1}).map(p =><div>{p.id}</div> )
 
          const pageNumbers = [];
          for (let i = 1; i <= Math.ceil(this.props.items.length / this.state.todosPerPage); i++) {
@@ -69,15 +50,12 @@ import '../scss/about.scss'
                  </span>
              );
          })
-
          return <div className='body'>
-
                      {renderPageNumbers}
-
              <table border="1">
                  <tr>
                      <th>Id</th>
-                     <th>FirstName <button onClick={this.activateSorti} >{this.state.buttext}</button></th>
+                     <th>FirstName </th>
                  </tr>
                  <tr>
                      <td>{postsElementsId}</td>
