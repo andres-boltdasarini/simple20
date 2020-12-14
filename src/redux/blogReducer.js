@@ -7,9 +7,8 @@ let initialState = {
         {id: 3, message: 'Получайте 33 МП снимки из ваших 8К видео'},
         {id: 4, message: 'Снимайте как на экшн-камеру'}
     ],
-
-    profile: null,
-    status: ""
+    status: "status",
+    newPostText: ''
 };
 
 const blogReducer = (state = initialState, action) => {

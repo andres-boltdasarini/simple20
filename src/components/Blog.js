@@ -43,6 +43,7 @@ const Blog = (props) => {
     return (
         <div className='body'>
             <Bar/>
+            <div>{props.status}</div>
             <h3>характеристики</h3>
             <AddNewPostFormRedux onSubmit={onAddPost} />
             <div>
@@ -55,7 +56,8 @@ const Blog = (props) => {
 const mapStateToProps = (state) => {
     return {
         messages: state.blogReducer.messages,
-        newPostText: state.blogReducer.newPostText
+        newPostText: state.blogReducer.newPostText,
+        status: state.blogReducer.status,
     }
 }
 
