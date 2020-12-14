@@ -1,11 +1,11 @@
 import { reducer as formReducer } from 'redux-form'
-import profileReducer from "@/redux/blogReducer";
+import blogReducer from "@/redux/blogReducer";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunkMiddleware from "redux-thunk";
 import tableReducer from "@/redux/tableReducer";
 
 let reducers = combineReducers({
-    profilePage: profileReducer,
+    blogReducer: blogReducer,
     tableReducer: tableReducer,
     form: formReducer
 });

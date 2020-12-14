@@ -30,7 +30,7 @@ const Blog = (props) => {
         )
     }
     let postsElements =
-        [...props.posts]
+        [...props.messages]
             .reverse()
             .map( p => <Post message={p.message}/>);
 
@@ -54,8 +54,8 @@ const Blog = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
+        messages: state.blogReducer.messages,
+        newPostText: state.blogReducer.newPostText
     }
 }
 
