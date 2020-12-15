@@ -36,7 +36,6 @@ const Blog = (props) => {
 
     const deactivateEditMode = () => {
         setEditMode(false);
-        useEffect(status);
     }
 
     const onStatusChange = (e) =>{
