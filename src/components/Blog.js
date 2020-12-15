@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
 import {addPostActionCreator} from "@/redux/blogReducer";
 import '../scss/about.scss'
@@ -22,6 +22,26 @@ let AddNewPostForm = (props) => {
 let AddNewPostFormRedux = reduxForm({form: "ProfileAddNewPostForm"})(AddNewPostForm);
 
 const Blog = (props) => {
+    let [editMode, setEditMode] = useState(false)
+    let [status,setStatus] = useState('test')
+
+    useEffect( () => {
+        setStatus(status)
+    },[status])
+
+
+    const activateEditMode = () => {
+        setEditMode(true);
+    }
+
+    const deactivateEditMode = () => {
+        setEditMode(false);
+        useEffect(status);
+    }
+
+    const onStatusChange = (e) =>{
+        setStatus(e.currentTarget.value)
+    }
     const Post = (props) => {
         return (
             <div >
@@ -43,7 +63,17 @@ const Blog = (props) => {
     return (
         <div className='body'>
             <Bar/>
-            <div>{props.status}</div>
+            <div>
+                {!editMode && <div>
+                    <span onDoubleClick={activateEditMode}>{status || "-----"}</span>
+                </div>
+                }
+                {editMode &&
+                <div>
+                    <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode}value={status}/>
+                </div>
+                }
+            </div>
             <h3>характеристики</h3>
             <AddNewPostFormRedux onSubmit={onAddPost} />
             <div>
@@ -57,7 +87,7 @@ const mapStateToProps = (state) => {
     return {
         messages: state.blogReducer.messages,
         newPostText: state.blogReducer.newPostText,
-        status: state.blogReducer.status,
+
     }
 }
 
